@@ -1,14 +1,28 @@
 from typing import List
 from fastapi import FastAPI
 import uvicorn
+from fastapi_pagination import Page, add_pagination, paginate
+from fastapi.middleware.cors import CORSMiddleware
 
 from crud import getSpecialities , getBranches , getDocuments
 import serializers
-from fastapi_pagination import Page, add_pagination, paginate
 
 # initialize app
 
 app = FastAPI()
+
+origins = [
+    "http://localhost",
+    "http://localhost:5173",
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 
 # get all specialty
