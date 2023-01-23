@@ -4,7 +4,7 @@ import uvicorn
 from fastapi_pagination import Page, add_pagination, paginate
 from fastapi.middleware.cors import CORSMiddleware
 
-from crud import getSpecialities , getBranches , getDocuments
+from crud import Specialities,  Branches , getDocuments
 import serializers
 
 # initialize app
@@ -28,20 +28,25 @@ app.add_middleware(
 # get all specialty
 @app.get('/specialities' , response_model=List[serializers.SpecialitySerializer])
 def get_specialities():
-    specialities = getSpecialities()
+    specialities = Specialities.getSpecialities()
     return specialities
 
 
 # get branches of specialities
-@app.get('/speciality/{id}/branches' , response_model=Page[serializers.BranchSerializer])
+@app.get('/speciality/{id}/branches' , response_model=serializers.BranchesSerializer)
 def get_branches(id : int):
-    branches = getBranches(id)
-    return paginate(branches)
+    branches = Branches.getBranches(id)
+    speciality = Specialities.getSpecificSpeciality(id)
+    results = {"title": speciality.title, "items": branches}
+    return results
 
-@app.get('/branche/{id}/documnets' , response_model=Page[serializers.DocumentSerializer])
+
+@app.get('/branche/{id}/documnets' , response_model=serializers.DocumentsSerializer)
 def get_documents(id : int):
     documents = getDocuments(id)
-    return paginate(documents)
+    branche = Branches.getSpecificBranches(id)
+    results = {"title": branche.title, "items": documents}
+    return results
 
 
 
