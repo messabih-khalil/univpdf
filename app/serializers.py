@@ -24,7 +24,6 @@ class BranchesSerializer(BaseModel):
         orm_mode = True
 
 class DocumentSerializer(BaseModel):
-    id: int
     title : str
     pdf_url : str
 

@@ -21,9 +21,9 @@ class Branches:
         with session:
             return session.query(Branch).filter(Branch.speciality_id == id).all()
 
-    def getSpecificBranches(id):
+    def getSpecificBranche(id):
         with session:
-            return session.query(Branch).filter(Branch.speciality_id == id).first()
+            return session.query(Branch).filter(Branch.id == id).first()
 
 def getDocuments(id):
     with session:

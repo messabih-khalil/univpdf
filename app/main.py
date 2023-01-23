@@ -44,7 +44,7 @@ def get_branches(id : int):
 @app.get('/branche/{id}/documnets' , response_model=serializers.DocumentsSerializer)
 def get_documents(id : int):
     documents = getDocuments(id)
-    branche = Branches.getSpecificBranches(id)
+    branche = Branches.getSpecificBranche(id)
     results = {"title": branche.title, "items": documents}
     return results
 
