@@ -3,7 +3,7 @@ from sqlalchemy.orm import relationship
 from database import Base
 
 class Speciality(Base):
-    __tablename__ = "specialies"
+    __tablename__ = "specialities"
 
     id = Column(Integer, primary_key=True, index=True)
     title = Column(String, nullable=False)
@@ -16,7 +16,7 @@ class Branch(Base):
     __tablename__ = "branches"
     id = Column(Integer, primary_key=True, index=True)
     title = Column(String, nullable=False)
-    speciality_id = Column(Integer, ForeignKey("specialies.id"))
+    speciality_id = Column(Integer, ForeignKey("specialities.id"))
 
     Speciality = relationship("Speciality", back_populates="branches")
     documents = relationship("Document", back_populates="branch")
