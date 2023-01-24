@@ -10,13 +10,12 @@ class Specialities:
             return session.query(Speciality).all()
 
     def getSpecificSpeciality(id):
-        return session.query(Speciality).filter(Speciality.id == id).first()
-
-
+        with session:
+        
+            return session.query(Speciality).filter(Speciality.id == id).first()
 
 
 class Branches:
-
     def getBranches(id):
         with session:
             return session.query(Branch).filter(Branch.speciality_id == id).all()
@@ -24,7 +23,10 @@ class Branches:
     def getSpecificBranche(id):
         with session:
             return session.query(Branch).filter(Branch.id == id).first()
+            
+           
 
 def getDocuments(id):
     with session:
         return session.query(Document).filter(Document.branch_id == id).all()
+        
