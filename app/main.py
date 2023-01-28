@@ -9,7 +9,7 @@ import serializers
 
 # initialize app
 
-app = FastAPI()
+app = FastAPI(docs_url=None, redoc_url=None)
 
 origins = [
     "https://univpaper.vercel.app/",
