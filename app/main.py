@@ -12,8 +12,8 @@ import serializers
 app = FastAPI()
 
 origins = [
-    "http://localhost",
-    "http://localhost:5173",
+    "https://univpaper.vercel.app/",
+    "http://univpaper.vercel.app/",
 ]
 
 app.add_middleware(
