@@ -4,7 +4,7 @@ import uvicorn
 from fastapi_pagination import Page, add_pagination, paginate
 from fastapi.middleware.cors import CORSMiddleware
 
-from crud import Specialities,  Branches , getDocuments
+from .crud import Specialities,  Branches , getDocuments
 import serializers
 
 # initialize app

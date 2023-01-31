@@ -1,6 +1,6 @@
-from database import SessionLocal
-from models import Speciality , Branch , Document
-from serializers import SpecialitySerializer
+from .database import SessionLocal
+from .models import Speciality , Branch , Document
+from .serializers import SpecialitySerializer
 
 session = SessionLocal()
 
